@@ -68,16 +68,20 @@
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 35px;
+            gap: 25px;
         }
 
-        .logo-mark {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-gold));
-            border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-            display: inline-block;
-            box-shadow: 0 0 15px rgba(255, 31, 109, 0.5);
+        /* Top Left Image Logo (Your Eurovision Heart) */
+        .heart-logo {
+            height: 34px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 31, 109, 0.4));
+            transition: transform 0.2s ease;
+        }
+
+        .heart-logo:hover {
+            transform: scale(1.08);
         }
 
         .nav-links {
@@ -110,27 +114,24 @@
             display: none;
         }
 
-        /* Center Logo Container */
+        /* Center Text Branding Restored */
         .nav-center {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-weight: 900;
+            letter-spacing: 4px;
+            font-size: 1.1rem;
+            text-align: center;
+            line-height: 1;
         }
 
-        .main-logo {
-            height: 42px;
-            width: auto;
-            object-fit: contain;
-            /* Keeps logo looking sharp and adds a subtle professional premium depth */
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
-            transition: transform 0.3s ease;
-        }
-
-        .main-logo:hover {
-            transform: scale(1.02);
+        .nav-center span {
+            display: block;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-top: 2px;
         }
 
         .nav-right {
@@ -266,9 +267,6 @@
             .nav-links, .profile-icon {
                 display: none;
             }
-            .main-logo {
-                height: 35px;
-            }
             footer {
                 flex-direction: column;
                 gap: 10px;
@@ -282,7 +280,8 @@
 
     <header>
         <div class="nav-left">
-            <div class="logo-mark"></div>
+            <img src="vexvision-heart.png" alt="Vexvision Heart" class="heart-logo">
+            
             <div class="nav-links">
                 <a href="#">Vienna 2026</a>
                 <a href="#">Delegations</a>
@@ -291,7 +290,8 @@
         </div>
         
         <div class="nav-center">
-            <img src="logo.png" alt="Vexvision Song Contest" class="main-logo">
+            VEXVISION
+            <span>SONG CONTEST</span>
         </div>
 
         <div class="nav-right">
