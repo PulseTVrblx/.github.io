@@ -69,7 +69,7 @@
             color: var(--vex-accent);
         }
 
-        /* Hero Landing Showcase */
+        /* Main Landing Layout */
         .hero {
             text-align: center;
             padding: 160px 20px 80px 20px;
@@ -95,10 +95,10 @@
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 15px;
+            font-size: 5.5rem;
+            margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             font-weight: 900;
             background: linear-gradient(to bottom, #ffffff, #b2bec3);
             -webkit-background-clip: text;
@@ -106,12 +106,24 @@
             filter: drop-shadow(0 0 30px rgba(142, 68, 173, 0.6));
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-            font-weight: 300;
+        /* Animated Coming Soon Text */
+        .coming-soon {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #fff, var(--vex-accent), #a29bfe, #fff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShine 4s linear infinite;
+        }
+
+        @keyframes gradientShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Venue Spotlight Card */
@@ -125,7 +137,7 @@
             gap: 20px;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .venue-icon {
@@ -150,36 +162,6 @@
             color: var(--text-muted);
         }
 
-        /* Countdown Grid Setup */
-        .countdown-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .countdown-box {
-            background: rgba(15, 12, 27, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            min-width: 90px;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .countdown-value {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #fff;
-            display: block;
-        }
-
-        .countdown-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
         /* Action Controls */
         .cta-group {
             display: flex;
@@ -187,6 +169,9 @@
         }
 
         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 15px 35px;
             font-size: 0.95rem;
             font-weight: 700;
@@ -195,29 +180,19 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-decoration: none;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+        .btn-discord {
+            background: linear-gradient(45deg, #5865F2, #7289DA);
             color: white;
             border: none;
-            box-shadow: 0 0 20px rgba(142, 68, 173, 0.4);
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
         }
 
-        .btn-primary:hover {
+        .btn-discord:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(52, 152, 219, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: white;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.7);
         }
 
         /* Footer Attribution */
@@ -228,6 +203,7 @@
             color: var(--text-muted);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             background: #06040a;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -238,14 +214,14 @@
         <nav>
             <a href="#">Overview</a>
             <a href="#">Venue</a>
-            <a href="#">Dev Blog</a>
+            <a href="https://discord.gg/PE5ghAWX5t" target="_blank">Discord</a>
         </nav>
     </header>
 
     <main class="hero">
         <div class="status-badge">Production Phase</div>
         <h1>Vexvision</h1>
-        <p>The next generation of digital music production and performance engineering is currently in development.</p>
+        <div class="coming-soon">Coming Soon</div>
         
         <div class="venue-card">
             <div class="venue-icon">🏟️</div>
@@ -255,67 +231,13 @@
             </div>
         </div>
 
-        <div class="countdown-container">
-            <div class="countdown-box">
-                <span class="countdown-value" id="days">--</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-box">
-                <span class="countdown-value" id="hours">--</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-box">
-                <span class="countdown-value" id="minutes">--</span>
-                <span class="countdown-label">Mins</span>
-            </div>
-            <div class="countdown-box">
-                <span class="countdown-value" id="seconds">--</span>
-                <span class="countdown-label">Secs</span>
-            </div>
-        </div>
-
         <div class="cta-group">
-            <button class="btn btn-primary" onclick="alert('Applications and delegation sign-ups open soon!')">Enter Delegation</button>
-            <button class="btn btn-secondary" onclick="alert('Development updates will be posted here.')">Follow Updates</button>
+            <a href="https://discord.gg/PE5ghAWX5t" target="_blank" class="btn btn-discord">Join Now!</a>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 Vexvision Production Team. Built for the Roblox Community. Independent project unassociated with the EBU or Wiener Stadthalle operating corps.
+        &copy; 2026 Vexvision Production Team. All Rights Reserved. Built for the Roblox Community. Independent project unassociated with the EBU or Wiener Stadthalle operating corps.
     </footer>
-
-    <script>
-        // Set a future placeholder launch date for the countdown mechanism
-        // Adjust the date below to match your actual targeted launch timeframe
-        const targetLaunchDate = new Date();
-        targetLaunchDate.setDate(targetLaunchDate.getDate() + 45); // Defaults to 45 days from current initialization
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetLaunchDate - now;
-
-            // Mathematical calculation metrics for structural breakdown
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Document object model node value mutation
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-
-            // Fallback parameters once deadline threshold passes
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.querySelector(".countdown-container").innerHTML = "<p style='color: var(--vex-accent); font-weight: bold;'>PRE-PRODUCTION STAGE LIVE</p>";
-            }
-        }
-
-        // Initialize execution sequence looping every 1000ms
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
 </body>
 </html>
